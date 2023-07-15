@@ -46,7 +46,7 @@ class game_logic:
 
             self.snake.move_snake()
 
-            self.snake.valid_boundary()
+            self.snake.valid_snake_position()
 
             game_loop = self.__quit_game()
 

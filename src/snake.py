@@ -58,13 +58,13 @@ class snake:
 
         self.snake_body_dict.append([self.x_snake, self.y_snake, self.angle])
 
-        if len(self.snake_body_dict) > self.score * 5:
+        if len(self.snake_body_dict) > self.score * 3:
             del self.snake_body_dict[0]
 
         for index in self.snake_body_dict:
             self.__draw_snake(self.body_sprite, index[0], index[1], index[2])
 
-    def valid_boundary(self) -> None:
+    def valid_snake_position(self) -> None:
         """Method to ensure that the snake has not hit the boundary"""
 
         if self.x_snake < 60 or self.x_snake > 710:
@@ -72,6 +72,10 @@ class snake:
 
         elif self.y_snake < 65 or self.y_snake > 625:
             self.__reset_snake()
+
+        for index in self.snake_body_dict[:-1]:
+            if index[0] == self.x_snake and index[1] == self.y_snake:
+                self.__reset_snake()
 
     def move_snake(self) -> None:
         """Method to allow movement of the snake"""
@@ -115,7 +119,7 @@ class snake:
         """Method to update the score"""
 
         self.score += 1
-        if self.score % 5 == 0:
+        if self.score % 5 == 0 and self.snake_speed < 9:
             self.snake_speed += 1
 
     def __draw_snake(self, sprite: str, x: int, y: int, angle: int) -> None:
