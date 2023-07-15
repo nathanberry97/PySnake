@@ -6,7 +6,7 @@ class apple:
     def __init__(self, display: pygame.Surface):
         self.display = display
 
-        self.apple_sprite = "../assets/apple.png"
+        self.apple_sprite = "../assets/snake/apple.png"
 
         self.x_apple, self.y_apple = randrange(70, 700), randrange(75, 615)
 
@@ -18,12 +18,14 @@ class apple:
 
         self.display.blit(resize_sprite, (self.x_apple, self.y_apple))
 
-    def update_apple_position(self, snake_position: tuple[int, int]) -> None:
+    def apple_collision(self, snake_position: tuple[int, int]) -> bool:
         """Method to detect if the apple has been ate"""
 
         x_snake, y_snake = snake_position
 
-        pixel_range = 20
+        updated = False
+
+        pixel_range = 25
 
         x_range = range(self.x_apple - pixel_range, self.x_apple + pixel_range)
         y_range = range(self.y_apple - pixel_range, self.y_apple + pixel_range)
@@ -31,3 +33,6 @@ class apple:
         if x_snake in x_range and y_snake in y_range:
             self.x_apple = randrange(70, 700)
             self.y_apple = randrange(75, 615)
+            updated = True
+
+        return updated

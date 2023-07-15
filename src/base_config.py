@@ -5,7 +5,7 @@ class base_config:
     def __init__(self, x_axis: int, y_axis: int):
         self.x_axis = x_axis
         self.y_axis = y_axis
-        self.background_sprite = "../assets/background.png"
+        self.background_sprite = "../assets/snake/background.png"
 
     def configure_screen(self) -> pygame.Surface:
         """Method to create base screen"""

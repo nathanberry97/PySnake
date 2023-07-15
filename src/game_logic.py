@@ -19,9 +19,16 @@ class game_logic:
 
             self.screen.blit(self.background, (0, 0))
 
+            self.__display_score()
+
             self.apple.draw_apple()
 
-            self.apple.update_apple_position(self.snake.get_position())
+            if self.apple.apple_collision(self.snake.get_position()):
+                self.snake.update_score()
+
+            self.snake.snake_body()
+
+            self.snake.snake_tail()
 
             self.snake.snake_head()
 
@@ -49,3 +56,20 @@ class game_logic:
 
         clock = pygame.time.Clock()
         clock.tick(fps)
+
+    def __display_score(self) -> None:
+        """Method to display current score"""
+
+        sprite = "../assets/numbers/zero.png"
+
+        self.__draw_sore(sprite, 215, 18)
+        self.__draw_sore(sprite, 240, 18)
+        self.__draw_sore(sprite, 265, 18)
+
+    def __draw_sore(self, sprite: str, x: int, y: int) -> None:
+        """Method to draw snake onto the display"""
+
+        import_sprite = pygame.image.load(sprite).convert_alpha()
+        resize_sprite = pygame.transform.scale_by(import_sprite, 5)
+
+        self.screen.blit(resize_sprite, (x, y))
