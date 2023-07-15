@@ -67,10 +67,10 @@ class snake:
     def valid_snake_position(self) -> None:
         """Method to ensure that the snake has not hit the boundary"""
 
-        if self.x_snake < 60 or self.x_snake > 710:
+        if self.x_snake < 65 or self.x_snake > 710:
             self.__reset_snake()
 
-        elif self.y_snake < 65 or self.y_snake > 625:
+        elif self.y_snake < 65 or self.y_snake > 630:
             self.__reset_snake()
 
         for index in self.snake_body_dict[:-1]:
