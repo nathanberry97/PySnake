@@ -16,9 +16,9 @@ class game_logic:
         self.score = score(self.screen)
         self.menu = menu(self.screen)
 
-        self.start = self.base.import_background("menu/backgroundMenu.png")
+        self.menu_snake = self.base.import_background("menu/background.png")
         self.background = self.base.import_background("snake/background.png")
-        self.fps = 60
+        self.fps = 30
 
     def main_loop(self) -> None:
         """The main loop of the game"""
@@ -26,7 +26,7 @@ class game_logic:
         game_loop = True
 
         while game_loop:
-            self.screen.blit(self.start, (0, 0))
+            self.screen.blit(self.menu_snake, (0, 0))
 
             self.menu.set_state()
 
@@ -61,13 +61,14 @@ class game_logic:
 
             self.snake.move_snake()
 
-            play = self.base.quit_game()
+            play = self.snake.valid_snake_position()
 
-            self.snake.valid_snake_position()
+            if play:
+                play = self.base.quit_game()
 
             pygame.display.update()
 
-    def __start_screen(self):
+    def __start_screen(self) -> bool:
         """Method to determine start menu option"""
 
         game_loop = True

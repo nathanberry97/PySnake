@@ -21,7 +21,7 @@ class menu:
         """Method to draw the menu icon"""
 
         if self.state == 0:
-            self.__draw_icon("snake_icon", 330, 396)
+            self.__draw_icon("start_icon", 330, 396)
 
         elif self.state == 1:
             self.__draw_icon("exit_icon", 330, 496)

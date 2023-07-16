@@ -64,18 +64,25 @@ class snake:
         for index in self.snake_body_dict:
             self.__draw_snake(self.body_sprite, index[0], index[1], index[2])
 
-    def valid_snake_position(self) -> None:
+    def valid_snake_position(self) -> bool:
         """Method to ensure that the snake has not hit the boundary"""
+
+        valid = True
 
         if self.x_snake < 65 or self.x_snake > 710:
             self.__reset_snake()
+            valid = False
 
         elif self.y_snake < 65 or self.y_snake > 630:
             self.__reset_snake()
+            valid = False
 
         for index in self.snake_body_dict[:-1]:
             if index[0] == self.x_snake and index[1] == self.y_snake:
                 self.__reset_snake()
+                valid = False
+
+        return valid
 
     def move_snake(self) -> None:
         """Method to allow movement of the snake"""
