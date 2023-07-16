@@ -1,17 +1,10 @@
 # PySnake
 
+<img src="./assets/readme/menu.png" width="500" height="500" />
+
 ## Overview
 
-This project is a Snake clone created using Python and pygame, here are a few
-screen shots in game:
-
-### Game menu
-
-![menu](./assets/readme/menu.png =400x)
-
-### Game play
-
-![game](./assets/readme/menu.png =400x)
+This project is a Snake clone created using Python and pygame.
 
 ## Prerequisites
 
@@ -40,3 +33,7 @@ cd ./src
 ```
 
 > **Note** I have only tested this game on a linux system
+
+## Preview
+
+<img src="./assets/readme/snake.png" width="500" height="500" />
