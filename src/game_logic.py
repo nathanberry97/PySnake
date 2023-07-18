@@ -16,7 +16,7 @@ class game_logic:
         self.score = score(self.screen)
         self.menu = menu(self.screen)
 
-        self.menu_snake = self.base.import_background("menu/background.png")
+        self.menu_snake = self.base.import_background("menu/menu.png")
         self.background = self.base.import_background("snake/background.png")
         self.fps = 30
 
@@ -40,6 +40,8 @@ class game_logic:
         """Game loop for snake"""
 
         play = True
+
+        self.menu_snake = self.base.import_background("menu/menu_gameover.png")
 
         while play:
             self.base.set_frame_rate(self.fps)
