@@ -18,7 +18,7 @@ class snake:
         self.x_snake = 375
         self.y_snake = 375
 
-        self.snake_body_dict = [[self.x_snake, self.y_snake, 0]]
+        self.snake_body_list = [[self.x_snake, self.y_snake, 0]]
 
         self.angle = 0
         self.score = 0
@@ -35,9 +35,9 @@ class snake:
     def snake_tail(self) -> None:
         """Method to create and resize the snakes head"""
 
-        x_axis = self.snake_body_dict[0][0]
-        y_axis = self.snake_body_dict[0][1]
-        angle = self.snake_body_dict[0][2]
+        x_axis = self.snake_body_list[0][0]
+        y_axis = self.snake_body_list[0][1]
+        angle = self.snake_body_list[0][2]
 
         if angle == 0:
             y_axis += 20
@@ -56,12 +56,12 @@ class snake:
     def snake_body(self) -> None:
         """Method to draw the snakes body"""
 
-        self.snake_body_dict.append([self.x_snake, self.y_snake, self.angle])
+        self.snake_body_list.append([self.x_snake, self.y_snake, self.angle])
 
-        if len(self.snake_body_dict) > self.score * 3:
-            del self.snake_body_dict[0]
+        if len(self.snake_body_list) > self.score * 3:
+            del self.snake_body_list[0]
 
-        for index in self.snake_body_dict:
+        for index in self.snake_body_list:
             self.__draw_snake(self.body_sprite, index[0], index[1], index[2])
 
     def valid_snake_position(self) -> bool:
@@ -77,7 +77,7 @@ class snake:
             self.__reset_snake()
             valid = False
 
-        for index in self.snake_body_dict[:-1]:
+        for index in self.snake_body_list[:-1]:
             if index[0] == self.x_snake and index[1] == self.y_snake:
                 self.__reset_snake()
                 valid = False
@@ -150,5 +150,5 @@ class snake:
         self.angle = 0
         self.score = 0
 
-        self.snake_body_dict.clear()
-        self.snake_body_dict = [[self.x_snake, self.y_snake, 0]]
+        self.snake_body_list.clear()
+        self.snake_body_list = [[self.x_snake, self.y_snake, 0]]
