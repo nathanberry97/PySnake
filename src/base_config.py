@@ -9,7 +9,7 @@ class base_config:
     def configure_screen(self) -> pygame.Surface:
         """Method to create base screen"""
 
-        pygame.display.set_caption("Retro Games")
+        pygame.display.set_caption("PySnake")
 
         size = (self.x_axis, self.y_axis)
         screen = pygame.display.set_mode(size)
